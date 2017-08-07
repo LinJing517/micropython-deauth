@@ -19,23 +19,6 @@ bssid=''#bssid:AP MAC address
 channel=''#信道
 _client=[0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]#默认
 
-
-# def beacon(ssid, channel, times):
-    # packet = bytearray([0x80,0x00,0x00,0x00,0xff,0xff,0xff,0xff,0xff,0xff,0xb8,0xe8,0x56,0x33,0xde,0x01,0xb8,0xe8,0x56,0x33,0xde,0x01,0xc0,0x6c,0x83,0x51,0xf7,0x8f,0x0f,0x00,0x00,0x00,0x64,0x00,0x01,0x04,0x00,0x00])
-    # packet[37] = len(ssid)
-    # packet.extend(ssid)
-    # packet.extend(bytearray([0x01,0x08,0x82,0x84,0x8b,0x96,0x24,0x30,0x48,0x6c,0x03,0x01,0x01]))
-    # packet[-1] = channel
-    # for i in range(times):
-        # packet[10] = packet[16] = uos.urandom(1)[0]
-        # packet[11] = packet[17] = uos.urandom(1)[0]
-        # packet[12] = packet[18] = uos.urandom(1)[0]
-        # packet[13] = packet[19] = uos.urandom(1)[0]
-        # packet[14] = packet[20] = uos.urandom(1)[0]
-        # packet[15] = packet[21] = uos.urandom(1)[0]
-        # sta_if.send_pkt_freedom(channel, packet)
-        # time.sleep_ms(10)
-
 def deauth(_ap,_client,type,reason):
     # 0 - 1   type, subtype c0: deauth (a0: disassociate)
     # 2 - 3   duration (SDK takes care of that)
